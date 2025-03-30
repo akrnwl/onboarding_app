@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:infoteam_app/gen/assets.gen.dart'; 
-import 'package:http/http.dart' as http;
 
 
 
@@ -12,7 +9,7 @@ class Focusheader extends StatelessWidget implements PreferredSizeWidget {
   var name;
 
   Focusheader({Key? key})
-      : preferredSize = Size.fromHeight(56.0), // AppBar의 기본 높이
+      : preferredSize = const Size.fromHeight(56.0), // AppBar의 기본 높이
         super(key: key);
 
   @override

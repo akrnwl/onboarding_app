@@ -14,7 +14,7 @@ class PostPage extends StatelessWidget {
   final content="냠냠";
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: Focusheader(),
       body: Center(
         child: Padding(

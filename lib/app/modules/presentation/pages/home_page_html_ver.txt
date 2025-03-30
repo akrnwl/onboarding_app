@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:infoteam_app/app/modules/presentation/widgets/header.dart'; 
 import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/notice_thumbnail.dart';
-import 'package:dio/dio.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,34 +13,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String title = 'dummy';  // 초기 title 값 설정
   bool isLoading = false;  // 로딩 상태 추가
-  final Dio _dio = Dio();
-  var data_list = [];
-  var data_index = 0;
+
   // 비동기 데이터 가져오는 함수
   Future<void> _fetchData() async {
     setState(() {
       isLoading = true;  // 로딩 상태 시작
     });
 
-    try {
-      var response = await _dio.get('https://api.newbie.gistory.me/posts');
-      setState()
-      {
-        data_list = response.data['list'];
-        data_index = response.data['count'];
-        isLoading = false ;
-      }
-    } catch(e) 
-    {
-      setState(() {
-        isLoading = false;  // 로딩 상태 종료
-      });
-      // 예외 처리
-      print('Error occurred: $e');
-    }
-
     
-    /* try {
+    try {
       var url = Uri.https('api.newbie.gistory.me', '/boards');
 
       var response = await http.get(url);
@@ -65,12 +45,7 @@ class _HomePageState extends State<HomePage> {
       });
       // 예외 처리
       print('Error occurred: $e');
-    } */
-  }
-  @override
-  void initState() {
-    super.initState();
-    _fetchData();  // 페이지 로드 시 데이터 가져오기
+    }
   }
 
   @override
@@ -78,19 +53,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 248, 248, 248),
       appBar: Header(),
-      body: isLoading 
-          ? const Center(child: CircularProgressIndicator())  // 데이터가 없고 로딩 중일 때 로딩 인디케이터 표시
-          : ListView.builder(
-              itemCount: data_index,  // data_list의 길이가 0일 경우 오류 없이 작동
-              itemBuilder: (context, index) {
-                return Thumbnailboard(
-                  name: data_list[index]['title'],
-                  content: data_list[index]['body'],
-                );
-              },
-            ),
-
-        /* children: [
+      body: ListView(
+        children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 20, left: 18, right: 18, top: 16),
             child: Column(
@@ -107,11 +71,13 @@ class _HomePageState extends State<HomePage> {
                 if (!isLoading)
                   Thumbnailboard(name: title, content: "공지 내용"),  // title을 반영한 데이터 표시
                 const SizedBox(height: 20),
+                // 추가적인 Thumbnailboard 위젯들...
               ],
             ),
           ),
-        ], */
+        ],
+      ),
       bottomNavigationBar: Navbar(),
-     );
+    );
   }
 }
