@@ -7,22 +7,25 @@ import 'package:infoteam_app/gen/assets.gen.dart';
 
 
 class PostPage extends StatelessWidget {
-  @override
   final title="게시글 제목";
   final author="어문경";
   final date="2025.03.27";
   final content="냠냠";
+
+  const PostPage({super.key});
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      appBar: Focusheader(),
+      appBar: const Focusheader(name: "제목"),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(left:32,right: 32,top:24,),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("$title", style: const TextStyle(
+              Text(title, style: const TextStyle(
                 fontSize: 25,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,
@@ -31,7 +34,7 @@ class PostPage extends StatelessWidget {
               const SizedBox(height: 10,),
               Row(
                 children: [
-                Text("$author",style: const TextStyle(
+                Text(author,style: const TextStyle(
                 color: Color.fromARGB(255, 151, 151, 151),
                 fontSize: 12,
                 fontFamily: 'Pretendard',
@@ -39,7 +42,7 @@ class PostPage extends StatelessWidget {
               ),
               ),
               const SizedBox(width: 20,),
-               Text("$date",style: const TextStyle(
+               Text(date,style: const TextStyle(
                 fontSize: 16,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w600,
@@ -67,7 +70,7 @@ class PostPage extends StatelessWidget {
               ),
               ),
               const SizedBox(height: 24),
-              Text("$content",style: const TextStyle(
+              Text(content,style: const TextStyle(
                 fontSize: 16,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,

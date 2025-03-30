@@ -8,6 +8,8 @@ import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
 
 
 class BoardPage extends StatelessWidget {
+  const BoardPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,7 @@ class BoardPage extends StatelessWidget {
       body: ListView(
         children: const [
           Padding(
-          padding: const EdgeInsets.only(left:12, right:12,top:16),
+          padding: EdgeInsets.only(left:12, right:12,top:16),
           child: Column(
             children: [
               Button(),

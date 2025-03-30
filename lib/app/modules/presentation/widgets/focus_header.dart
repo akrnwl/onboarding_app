@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:infoteam_app/gen/assets.gen.dart'; 
 
-
-
 class Focusheader extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
-  var name;
-
-  Focusheader({Key? key})
+  final String name;
+  @override
+  const Focusheader({Key? key, required this.name})
       : preferredSize = const Size.fromHeight(56.0), // AppBar의 기본 높이
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Color.fromARGB(255, 248, 248, 248),
+      backgroundColor: const Color.fromARGB(255, 248, 248, 248),
       leading: IconButton(
         icon: Assets.icons.left.svg(),
         onPressed: () {
 
         },
         ),
-      title: Row(
+      title: const Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top:12,bottom: 12,right: 130.5,left: 130.5),
+            padding: EdgeInsets.only(top:12,bottom: 12,right: 130.5,left: 130.5),
             child: Text(
               '게시판 선택',
               style: TextStyle(

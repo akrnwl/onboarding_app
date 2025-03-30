@@ -1,22 +1,22 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:infoteam_app/app/modules/presentation/widgets/header.dart'; 
 import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/notice_thumbnail.dart';
 import 'package:dio/dio.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   String title = 'dummy';  // 초기 title 값 설정
   bool isLoading = false;  // 로딩 상태 추가
   final Dio _dio = Dio();
-  var data_list = [];
-  var data_index = 0;
+  var dataList = [];
+  var dataIndex = 0;
   // 비동기 데이터 가져오는 함수
   Future<void> _fetchData() async {
     
@@ -26,10 +26,11 @@ class _HomePageState extends State<HomePage> {
     try {
       var response = await _dio.get('https://api.newbie.gistory.me/posts');
       print(response.data);
-        data_list = response.data['list'];
-        data_index = response.data['count'];
-        isLoading = false ;
-        print(isLoading);
+        dataList = response.data['list'];
+        dataIndex = response.data['count'];
+        setState(() {
+          isLoading = false;
+        });
       
     } catch(e) 
     {
@@ -38,7 +39,6 @@ class _HomePageState extends State<HomePage> {
       });
       // 예외 처리
       print('Error occurred: $e');
-      print(isLoading);
     }
 
     
@@ -82,11 +82,11 @@ class _HomePageState extends State<HomePage> {
       body: /* isLoading 
           ? const Center(child: CircularProgressIndicator())  // 데이터가 없고 로딩 중일 때 로딩 인디케이터 표시
           : */ ListView.builder(
-              itemCount: data_index,  // data_list의 길이가 0일 경우 오류 없이 작동
+              itemCount: dataIndex,  // data_list의 길이가 0일 경우 오류 없이 작동
               itemBuilder: (context, index) {
                 return Thumbnailboard(
-                  name: data_list[index]['title'],
-                  content: data_list[index]['body'],
+                  name: dataList[index]['title'],
+                  content: dataList[index]['body'],
                 );
               },
             ),
