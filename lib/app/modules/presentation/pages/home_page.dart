@@ -19,18 +19,18 @@ class _HomePageState extends State<HomePage> {
   var data_index = 0;
   // 비동기 데이터 가져오는 함수
   Future<void> _fetchData() async {
+    
     setState(() {
       isLoading = true;  // 로딩 상태 시작
     });
-
     try {
       var response = await _dio.get('https://api.newbie.gistory.me/posts');
-      setState()
-      {
+      print(response.data);
         data_list = response.data['list'];
         data_index = response.data['count'];
         isLoading = false ;
-      }
+        print(isLoading);
+      
     } catch(e) 
     {
       setState(() {
@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
       });
       // 예외 처리
       print('Error occurred: $e');
+      print(isLoading);
     }
 
     
@@ -78,9 +79,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 248, 248, 248),
       appBar: Header(),
-      body: isLoading 
+      body: /* isLoading 
           ? const Center(child: CircularProgressIndicator())  // 데이터가 없고 로딩 중일 때 로딩 인디케이터 표시
-          : ListView.builder(
+          : */ ListView.builder(
               itemCount: data_index,  // data_list의 길이가 0일 경우 오류 없이 작동
               itemBuilder: (context, index) {
                 return Thumbnailboard(
