@@ -1,4 +1,4 @@
-import 'package:infoteam_app/app/modules/data/model/user_model.dart';
+import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
