@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
 part 'post_api.g.dart';
-// Retrofit 초안
+
 @RestApi(baseUrl: 'https://api.newbie.gistory.me/posts')
 abstract class PostApi {
   factory PostApi(Dio dio, {String? baseUrl}) = _PostApi;
