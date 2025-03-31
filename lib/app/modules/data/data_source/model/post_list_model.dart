@@ -15,7 +15,7 @@ abstract class PostListModel with _$PostListModel{
     required String title,
     required String body,
     required List<String> tags,
-    required PostListBoardModel board ,
+    required BoardModel board ,
     required DateTime createdAt,
     required UserModel createdBy,
     required List<PostListImageModel> images,

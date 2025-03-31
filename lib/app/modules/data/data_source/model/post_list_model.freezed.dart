@@ -19,7 +19,7 @@ mixin _$PostListModel {
   String get title;
   String get body;
   List<String> get tags;
-  PostListBoardModel get board;
+  BoardModel get board;
   DateTime get createdAt;
   UserModel get createdBy;
   List<PostListImageModel> get images;
@@ -82,12 +82,12 @@ abstract mixin class $PostListModelCopyWith<$Res> {
       String title,
       String body,
       List<String> tags,
-      PostListBoardModel board,
+      BoardModel board,
       DateTime createdAt,
       UserModel createdBy,
       List<PostListImageModel> images});
 
-  $PostListBoardModelCopyWith<$Res> get board;
+  $BoardModelCopyWith<$Res> get board;
   $UserModelCopyWith<$Res> get createdBy;
 }
 
@@ -133,7 +133,7 @@ class _$PostListModelCopyWithImpl<$Res>
       board: null == board
           ? _self.board
           : board // ignore: cast_nullable_to_non_nullable
-              as PostListBoardModel,
+              as BoardModel,
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -153,8 +153,8 @@ class _$PostListModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PostListBoardModelCopyWith<$Res> get board {
-    return $PostListBoardModelCopyWith<$Res>(_self.board, (value) {
+  $BoardModelCopyWith<$Res> get board {
+    return $BoardModelCopyWith<$Res>(_self.board, (value) {
       return _then(_self.copyWith(board: value));
     });
   }
@@ -202,7 +202,7 @@ class _PostListModel implements PostListModel {
   }
 
   @override
-  final PostListBoardModel board;
+  final BoardModel board;
   @override
   final DateTime createdAt;
   @override
@@ -279,13 +279,13 @@ abstract mixin class _$PostListModelCopyWith<$Res>
       String title,
       String body,
       List<String> tags,
-      PostListBoardModel board,
+      BoardModel board,
       DateTime createdAt,
       UserModel createdBy,
       List<PostListImageModel> images});
 
   @override
-  $PostListBoardModelCopyWith<$Res> get board;
+  $BoardModelCopyWith<$Res> get board;
   @override
   $UserModelCopyWith<$Res> get createdBy;
 }
@@ -332,7 +332,7 @@ class __$PostListModelCopyWithImpl<$Res>
       board: null == board
           ? _self.board
           : board // ignore: cast_nullable_to_non_nullable
-              as PostListBoardModel,
+              as BoardModel,
       createdAt: null == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -352,8 +352,8 @@ class __$PostListModelCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PostListBoardModelCopyWith<$Res> get board {
-    return $PostListBoardModelCopyWith<$Res>(_self.board, (value) {
+  $BoardModelCopyWith<$Res> get board {
+    return $BoardModelCopyWith<$Res>(_self.board, (value) {
       return _then(_self.copyWith(board: value));
     });
   }

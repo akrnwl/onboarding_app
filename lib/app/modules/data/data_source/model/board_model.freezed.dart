@@ -14,28 +14,27 @@ part of 'board_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PostListBoardModel {
+mixin _$BoardModel {
   String get id;
   String get title;
   DateTime get createdAt;
   UserModel get creator;
 
-  /// Create a copy of PostListBoardModel
+  /// Create a copy of BoardModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PostListBoardModelCopyWith<PostListBoardModel> get copyWith =>
-      _$PostListBoardModelCopyWithImpl<PostListBoardModel>(
-          this as PostListBoardModel, _$identity);
+  $BoardModelCopyWith<BoardModel> get copyWith =>
+      _$BoardModelCopyWithImpl<BoardModel>(this as BoardModel, _$identity);
 
-  /// Serializes this PostListBoardModel to a JSON map.
+  /// Serializes this BoardModel to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PostListBoardModel &&
+            other is BoardModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
@@ -49,15 +48,15 @@ mixin _$PostListBoardModel {
 
   @override
   String toString() {
-    return 'PostListBoardModel(id: $id, title: $title, createdAt: $createdAt, creator: $creator)';
+    return 'BoardModel(id: $id, title: $title, createdAt: $createdAt, creator: $creator)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PostListBoardModelCopyWith<$Res> {
-  factory $PostListBoardModelCopyWith(
-          PostListBoardModel value, $Res Function(PostListBoardModel) _then) =
-      _$PostListBoardModelCopyWithImpl;
+abstract mixin class $BoardModelCopyWith<$Res> {
+  factory $BoardModelCopyWith(
+          BoardModel value, $Res Function(BoardModel) _then) =
+      _$BoardModelCopyWithImpl;
   @useResult
   $Res call({String id, String title, DateTime createdAt, UserModel creator});
 
@@ -65,14 +64,13 @@ abstract mixin class $PostListBoardModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PostListBoardModelCopyWithImpl<$Res>
-    implements $PostListBoardModelCopyWith<$Res> {
-  _$PostListBoardModelCopyWithImpl(this._self, this._then);
+class _$BoardModelCopyWithImpl<$Res> implements $BoardModelCopyWith<$Res> {
+  _$BoardModelCopyWithImpl(this._self, this._then);
 
-  final PostListBoardModel _self;
-  final $Res Function(PostListBoardModel) _then;
+  final BoardModel _self;
+  final $Res Function(BoardModel) _then;
 
-  /// Create a copy of PostListBoardModel
+  /// Create a copy of BoardModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -102,7 +100,7 @@ class _$PostListBoardModelCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of PostListBoardModel
+  /// Create a copy of BoardModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -115,14 +113,14 @@ class _$PostListBoardModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _PostListBoardModel implements PostListBoardModel {
-  const _PostListBoardModel(
+class _BoardModel implements BoardModel {
+  const _BoardModel(
       {required this.id,
       required this.title,
       required this.createdAt,
       required this.creator});
-  factory _PostListBoardModel.fromJson(Map<String, dynamic> json) =>
-      _$PostListBoardModelFromJson(json);
+  factory _BoardModel.fromJson(Map<String, dynamic> json) =>
+      _$BoardModelFromJson(json);
 
   @override
   final String id;
@@ -133,17 +131,17 @@ class _PostListBoardModel implements PostListBoardModel {
   @override
   final UserModel creator;
 
-  /// Create a copy of PostListBoardModel
+  /// Create a copy of BoardModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PostListBoardModelCopyWith<_PostListBoardModel> get copyWith =>
-      __$PostListBoardModelCopyWithImpl<_PostListBoardModel>(this, _$identity);
+  _$BoardModelCopyWith<_BoardModel> get copyWith =>
+      __$BoardModelCopyWithImpl<_BoardModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PostListBoardModelToJson(
+    return _$BoardModelToJson(
       this,
     );
   }
@@ -152,7 +150,7 @@ class _PostListBoardModel implements PostListBoardModel {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PostListBoardModel &&
+            other is _BoardModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
@@ -166,16 +164,16 @@ class _PostListBoardModel implements PostListBoardModel {
 
   @override
   String toString() {
-    return 'PostListBoardModel(id: $id, title: $title, createdAt: $createdAt, creator: $creator)';
+    return 'BoardModel(id: $id, title: $title, createdAt: $createdAt, creator: $creator)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PostListBoardModelCopyWith<$Res>
-    implements $PostListBoardModelCopyWith<$Res> {
-  factory _$PostListBoardModelCopyWith(
-          _PostListBoardModel value, $Res Function(_PostListBoardModel) _then) =
-      __$PostListBoardModelCopyWithImpl;
+abstract mixin class _$BoardModelCopyWith<$Res>
+    implements $BoardModelCopyWith<$Res> {
+  factory _$BoardModelCopyWith(
+          _BoardModel value, $Res Function(_BoardModel) _then) =
+      __$BoardModelCopyWithImpl;
   @override
   @useResult
   $Res call({String id, String title, DateTime createdAt, UserModel creator});
@@ -185,14 +183,13 @@ abstract mixin class _$PostListBoardModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PostListBoardModelCopyWithImpl<$Res>
-    implements _$PostListBoardModelCopyWith<$Res> {
-  __$PostListBoardModelCopyWithImpl(this._self, this._then);
+class __$BoardModelCopyWithImpl<$Res> implements _$BoardModelCopyWith<$Res> {
+  __$BoardModelCopyWithImpl(this._self, this._then);
 
-  final _PostListBoardModel _self;
-  final $Res Function(_PostListBoardModel) _then;
+  final _BoardModel _self;
+  final $Res Function(_BoardModel) _then;
 
-  /// Create a copy of PostListBoardModel
+  /// Create a copy of BoardModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -202,7 +199,7 @@ class __$PostListBoardModelCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? creator = null,
   }) {
-    return _then(_PostListBoardModel(
+    return _then(_BoardModel(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -222,7 +219,7 @@ class __$PostListBoardModelCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of PostListBoardModel
+  /// Create a copy of BoardModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')

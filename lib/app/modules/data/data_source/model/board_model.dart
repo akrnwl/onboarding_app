@@ -4,14 +4,14 @@ part 'board_model.freezed.dart';
 part 'board_model.g.dart';
 
 @freezed
-abstract class PostListBoardModel with _$PostListBoardModel{
-  const factory PostListBoardModel({
+abstract class BoardModel with _$BoardModel{
+  const factory BoardModel({
     required String id,
     required String title,
     required DateTime createdAt,
     required UserModel creator,
-  }) = _PostListBoardModel;
+  }) = _BoardModel;
 
-  factory PostListBoardModel.fromJson(Map<String, dynamic> json) =>
-        _$PostListBoardModelFromJson(json);
+  factory BoardModel.fromJson(Map<String, dynamic> json) =>
+        _$BoardModelFromJson(json);
 }

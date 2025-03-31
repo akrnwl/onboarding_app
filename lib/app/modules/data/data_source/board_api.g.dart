@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_api.dart';
+part of 'board_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,13 +8,13 @@ part of 'post_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _PostApi implements PostApi {
-  _PostApi(
+class _BoardApi implements BoardApi {
+  _BoardApi(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://api.newbie.gistory.me/posts';
+    baseUrl ??= 'https://api.newbie.gistory.me/boards';
   }
 
   final Dio _dio;
@@ -24,12 +24,12 @@ class _PostApi implements PostApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<PostModel> getPosts() async {
+  Future<BoardModel> getPosts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<PostModel>(Options(
+    final _options = _setStreamType<BoardModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -46,9 +46,9 @@ class _PostApi implements PostApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PostModel _value;
+    late BoardModel _value;
     try {
-      _value = PostModel.fromJson(_result.data!);
+      _value = BoardModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
