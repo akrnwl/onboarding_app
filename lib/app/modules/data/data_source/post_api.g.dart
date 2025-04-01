@@ -14,7 +14,7 @@ class _PostApi implements PostApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://api.newbie.gistory.me/posts';
+    baseUrl ??= 'posts';
   }
 
   final Dio _dio;

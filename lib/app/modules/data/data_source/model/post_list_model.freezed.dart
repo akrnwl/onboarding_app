@@ -22,7 +22,7 @@ mixin _$PostListModel {
   BoardModel get board;
   DateTime get createdAt;
   UserModel get createdBy;
-  List<PostListImageModel> get images;
+  List<PostListImageModel>? get images;
 
   /// Create a copy of PostListModel
   /// with the given fields replaced by the non-null parameter values.
@@ -85,7 +85,7 @@ abstract mixin class $PostListModelCopyWith<$Res> {
       BoardModel board,
       DateTime createdAt,
       UserModel createdBy,
-      List<PostListImageModel> images});
+      List<PostListImageModel>? images});
 
   $BoardModelCopyWith<$Res> get board;
   $UserModelCopyWith<$Res> get createdBy;
@@ -111,7 +111,7 @@ class _$PostListModelCopyWithImpl<$Res>
     Object? board = null,
     Object? createdAt = null,
     Object? createdBy = null,
-    Object? images = null,
+    Object? images = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -142,10 +142,10 @@ class _$PostListModelCopyWithImpl<$Res>
           ? _self.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      images: null == images
+      images: freezed == images
           ? _self.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<PostListImageModel>,
+              as List<PostListImageModel>?,
     ));
   }
 
@@ -181,7 +181,7 @@ class _PostListModel implements PostListModel {
       required this.board,
       required this.createdAt,
       required this.createdBy,
-      required final List<PostListImageModel> images})
+      final List<PostListImageModel>? images})
       : _tags = tags,
         _images = images;
   factory _PostListModel.fromJson(Map<String, dynamic> json) =>
@@ -207,12 +207,14 @@ class _PostListModel implements PostListModel {
   final DateTime createdAt;
   @override
   final UserModel createdBy;
-  final List<PostListImageModel> _images;
+  final List<PostListImageModel>? _images;
   @override
-  List<PostListImageModel> get images {
+  List<PostListImageModel>? get images {
+    final value = _images;
+    if (value == null) return null;
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(value);
   }
 
   /// Create a copy of PostListModel
@@ -282,7 +284,7 @@ abstract mixin class _$PostListModelCopyWith<$Res>
       BoardModel board,
       DateTime createdAt,
       UserModel createdBy,
-      List<PostListImageModel> images});
+      List<PostListImageModel>? images});
 
   @override
   $BoardModelCopyWith<$Res> get board;
@@ -310,7 +312,7 @@ class __$PostListModelCopyWithImpl<$Res>
     Object? board = null,
     Object? createdAt = null,
     Object? createdBy = null,
-    Object? images = null,
+    Object? images = freezed,
   }) {
     return _then(_PostListModel(
       id: null == id
@@ -341,10 +343,10 @@ class __$PostListModelCopyWithImpl<$Res>
           ? _self.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as UserModel,
-      images: null == images
+      images: freezed == images
           ? _self._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<PostListImageModel>,
+              as List<PostListImageModel>?,
     ));
   }
 

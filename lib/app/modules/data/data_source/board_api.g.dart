@@ -24,7 +24,7 @@ class _BoardApi implements BoardApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<BoardModel> getPosts() async {
+  Future<BoardModel> getBoards() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

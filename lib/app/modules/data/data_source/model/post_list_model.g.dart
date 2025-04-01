@@ -15,8 +15,8 @@ _PostListModel _$PostListModelFromJson(Map<String, dynamic> json) =>
       board: BoardModel.fromJson(json['board'] as Map<String, dynamic>),
       createdAt: DateTime.parse(json['createdAt'] as String),
       createdBy: UserModel.fromJson(json['createdBy'] as Map<String, dynamic>),
-      images: (json['images'] as List<dynamic>)
-          .map((e) => PostListImageModel.fromJson(e as Map<String, dynamic>))
+      images: (json['images'] as List<dynamic>?)
+          ?.map((e) => PostListImageModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
