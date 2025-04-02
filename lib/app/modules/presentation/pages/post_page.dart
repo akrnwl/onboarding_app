@@ -64,7 +64,7 @@ class PostPage extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: ClipRRect(
+              child: ClipRRect( 
               borderRadius: BorderRadius.circular(10),  // 이미지의 모서리를 둥글게 설정
               child: Assets.images.eximage.image(width: double.infinity, fit: BoxFit.cover),
               ),

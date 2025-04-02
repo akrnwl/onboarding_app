@@ -7,22 +7,17 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 class Thumbnailboard extends StatelessWidget {
-  const Thumbnailboard({super.key, required this.postModel, required this.index,});
+  const Thumbnailboard({super.key, required this.postModel,});
 
-  final PostModel postModel;
-  final int index;
+  final PostListModel postModel;
   
   @override
   Widget build(BuildContext context) {
-    final List<PostListModel> postListModel = postModel.list;
-    final List<PostListImageModel>? postListImageModel = postListModel[index].images;
-    final Uint8List image =Uint8List(0);
+    final List<PostListImageModel>? postListImageModel = postModel.images;
+    Uint8List image = Uint8List(0);
     if(postListImageModel != null && postListImageModel.isNotEmpty)
     {
-          if(postListImageModel[index].image!='')
-    {
-          Uint8List image = base64Decode(postListImageModel[index].image);
-    }
+          image = base64Decode(postListImageModel[0].image); //index
     }
     return Container(
       decoration: BoxDecoration(
@@ -35,7 +30,7 @@ class Thumbnailboard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              postListModel[index].title,
+              postModel.title,
               style: const TextStyle(
                 fontSize: 16,
                 fontFamily: 'Pretendard',
@@ -65,7 +60,7 @@ class Thumbnailboard extends StatelessWidget {
                 ),
                 width: double.infinity,
                 child: Text(
-                  postListModel[index].body,
+                  postModel.body,
                   style: const TextStyle(
                     fontSize: 14,
                     fontFamily: 'Pretendard',
