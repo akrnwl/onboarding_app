@@ -1,4 +1,4 @@
-import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
+import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -9,5 +9,8 @@ abstract class PostApi {
   factory PostApi(Dio dio, {String? baseUrl}) = _PostApi;
 
   @GET('')
-  Future<PostModel> getPosts(); 
+  Future<PostListModel> getPosts();
+
+  @POST('')
+  Future<PostListModel> postPosts();
 }

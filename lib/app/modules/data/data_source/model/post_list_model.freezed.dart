@@ -15,14 +15,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$PostListModel {
-  String get id;
-  String get title;
-  String get body;
-  List<String> get tags;
-  BoardModel get board;
-  DateTime get createdAt;
-  UserModel get createdBy;
-  List<PostListImageModel>? get images;
+  int get count;
+  List<PostModel> get list;
 
   /// Create a copy of PostListModel
   /// with the given fields replaced by the non-null parameter values.
@@ -40,34 +34,18 @@ mixin _$PostListModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is PostListModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.body, body) || other.body == body) &&
-            const DeepCollectionEquality().equals(other.tags, tags) &&
-            (identical(other.board, board) || other.board == board) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            const DeepCollectionEquality().equals(other.images, images));
+            (identical(other.count, count) || other.count == count) &&
+            const DeepCollectionEquality().equals(other.list, list));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      body,
-      const DeepCollectionEquality().hash(tags),
-      board,
-      createdAt,
-      createdBy,
-      const DeepCollectionEquality().hash(images));
+      runtimeType, count, const DeepCollectionEquality().hash(list));
 
   @override
   String toString() {
-    return 'PostListModel(id: $id, title: $title, body: $body, tags: $tags, board: $board, createdAt: $createdAt, createdBy: $createdBy, images: $images)';
+    return 'PostListModel(count: $count, list: $list)';
   }
 }
 
@@ -77,18 +55,7 @@ abstract mixin class $PostListModelCopyWith<$Res> {
           PostListModel value, $Res Function(PostListModel) _then) =
       _$PostListModelCopyWithImpl;
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String body,
-      List<String> tags,
-      BoardModel board,
-      DateTime createdAt,
-      UserModel createdBy,
-      List<PostListImageModel>? images});
-
-  $BoardModelCopyWith<$Res> get board;
-  $UserModelCopyWith<$Res> get createdBy;
+  $Res call({int count, List<PostModel> list});
 }
 
 /// @nodoc
@@ -104,69 +71,19 @@ class _$PostListModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? body = null,
-    Object? tags = null,
-    Object? board = null,
-    Object? createdAt = null,
-    Object? createdBy = null,
-    Object? images = freezed,
+    Object? count = null,
+    Object? list = null,
   }) {
     return _then(_self.copyWith(
-      id: null == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _self.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      body: null == body
-          ? _self.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String,
-      tags: null == tags
-          ? _self.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      board: null == board
-          ? _self.board
-          : board // ignore: cast_nullable_to_non_nullable
-              as BoardModel,
-      createdAt: null == createdAt
-          ? _self.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      createdBy: null == createdBy
-          ? _self.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-      images: freezed == images
-          ? _self.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<PostListImageModel>?,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      list: null == list
+          ? _self.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<PostModel>,
     ));
-  }
-
-  /// Create a copy of PostListModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BoardModelCopyWith<$Res> get board {
-    return $BoardModelCopyWith<$Res>(_self.board, (value) {
-      return _then(_self.copyWith(board: value));
-    });
-  }
-
-  /// Create a copy of PostListModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get createdBy {
-    return $UserModelCopyWith<$Res>(_self.createdBy, (value) {
-      return _then(_self.copyWith(createdBy: value));
-    });
   }
 }
 
@@ -174,47 +91,19 @@ class _$PostListModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _PostListModel implements PostListModel {
   const _PostListModel(
-      {required this.id,
-      required this.title,
-      required this.body,
-      required final List<String> tags,
-      required this.board,
-      required this.createdAt,
-      required this.createdBy,
-      final List<PostListImageModel>? images})
-      : _tags = tags,
-        _images = images;
+      {required this.count, required final List<PostModel> list})
+      : _list = list;
   factory _PostListModel.fromJson(Map<String, dynamic> json) =>
       _$PostListModelFromJson(json);
 
   @override
-  final String id;
+  final int count;
+  final List<PostModel> _list;
   @override
-  final String title;
-  @override
-  final String body;
-  final List<String> _tags;
-  @override
-  List<String> get tags {
-    if (_tags is EqualUnmodifiableListView) return _tags;
+  List<PostModel> get list {
+    if (_list is EqualUnmodifiableListView) return _list;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tags);
-  }
-
-  @override
-  final BoardModel board;
-  @override
-  final DateTime createdAt;
-  @override
-  final UserModel createdBy;
-  final List<PostListImageModel>? _images;
-  @override
-  List<PostListImageModel>? get images {
-    final value = _images;
-    if (value == null) return null;
-    if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_list);
   }
 
   /// Create a copy of PostListModel
@@ -237,34 +126,18 @@ class _PostListModel implements PostListModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PostListModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.body, body) || other.body == body) &&
-            const DeepCollectionEquality().equals(other._tags, _tags) &&
-            (identical(other.board, board) || other.board == board) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.createdBy, createdBy) ||
-                other.createdBy == createdBy) &&
-            const DeepCollectionEquality().equals(other._images, _images));
+            (identical(other.count, count) || other.count == count) &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      body,
-      const DeepCollectionEquality().hash(_tags),
-      board,
-      createdAt,
-      createdBy,
-      const DeepCollectionEquality().hash(_images));
+      runtimeType, count, const DeepCollectionEquality().hash(_list));
 
   @override
   String toString() {
-    return 'PostListModel(id: $id, title: $title, body: $body, tags: $tags, board: $board, createdAt: $createdAt, createdBy: $createdBy, images: $images)';
+    return 'PostListModel(count: $count, list: $list)';
   }
 }
 
@@ -276,20 +149,7 @@ abstract mixin class _$PostListModelCopyWith<$Res>
       __$PostListModelCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String body,
-      List<String> tags,
-      BoardModel board,
-      DateTime createdAt,
-      UserModel createdBy,
-      List<PostListImageModel>? images});
-
-  @override
-  $BoardModelCopyWith<$Res> get board;
-  @override
-  $UserModelCopyWith<$Res> get createdBy;
+  $Res call({int count, List<PostModel> list});
 }
 
 /// @nodoc
@@ -305,69 +165,19 @@ class __$PostListModelCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? body = null,
-    Object? tags = null,
-    Object? board = null,
-    Object? createdAt = null,
-    Object? createdBy = null,
-    Object? images = freezed,
+    Object? count = null,
+    Object? list = null,
   }) {
     return _then(_PostListModel(
-      id: null == id
-          ? _self.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      title: null == title
-          ? _self.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      body: null == body
-          ? _self.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as String,
-      tags: null == tags
-          ? _self._tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      board: null == board
-          ? _self.board
-          : board // ignore: cast_nullable_to_non_nullable
-              as BoardModel,
-      createdAt: null == createdAt
-          ? _self.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      createdBy: null == createdBy
-          ? _self.createdBy
-          : createdBy // ignore: cast_nullable_to_non_nullable
-              as UserModel,
-      images: freezed == images
-          ? _self._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<PostListImageModel>?,
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      list: null == list
+          ? _self._list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<PostModel>,
     ));
-  }
-
-  /// Create a copy of PostListModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $BoardModelCopyWith<$Res> get board {
-    return $BoardModelCopyWith<$Res>(_self.board, (value) {
-      return _then(_self.copyWith(board: value));
-    });
-  }
-
-  /// Create a copy of PostListModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get createdBy {
-    return $UserModelCopyWith<$Res>(_self.createdBy, (value) {
-      return _then(_self.copyWith(createdBy: value));
-    });
   }
 }
 

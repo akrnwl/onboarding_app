@@ -4,7 +4,7 @@ part 'board_model.freezed.dart';
 part 'board_model.g.dart';
 
 @freezed
-abstract class BoardModel with _$BoardModel{
+abstract class BoardModel with _$BoardModel {
   const factory BoardModel({
     required String id,
     required String title,
@@ -13,5 +13,5 @@ abstract class BoardModel with _$BoardModel{
   }) = _BoardModel;
 
   factory BoardModel.fromJson(Map<String, dynamic> json) =>
-        _$BoardModelFromJson(json);
+      _$BoardModelFromJson(json);
 }

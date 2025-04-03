@@ -9,5 +9,5 @@ abstract class BoardApi {
   factory BoardApi(Dio dio, {String? baseUrl}) = _BoardApi;
 
   @GET('')
-  Future<BoardModel> getBoards(); 
+  Future<BoardModel> getBoards();
 }

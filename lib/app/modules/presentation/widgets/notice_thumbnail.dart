@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:infoteam_app/gen/assets.gen.dart';
 import 'package:infoteam_app/app/modules/data/data_source/model/post_list_image_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
 import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
+import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 
 class Thumbnailboard extends StatelessWidget {
-  const Thumbnailboard({super.key, required this.postModel,});
+  const Thumbnailboard({
+    super.key,
+    required this.postModel,
+  });
 
-  final PostListModel postModel;
-  
+  final PostModel postModel;
+
   @override
   Widget build(BuildContext context) {
     final List<PostListImageModel>? postListImageModel = postModel.images;
     Uint8List image = Uint8List(0);
-    if(postListImageModel != null && postListImageModel.isNotEmpty)
-    {
-          image = base64Decode(postListImageModel[0].image); //index
+    if (postListImageModel != null && postListImageModel.isNotEmpty) {
+      image = base64Decode(postListImageModel[0].image); //index
     }
     return Container(
       decoration: BoxDecoration(
@@ -25,7 +27,8 @@ class Thumbnailboard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 15, left: 14, right: 14, bottom: 14),
+        padding:
+            const EdgeInsets.only(top: 15, left: 14, right: 14, bottom: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -46,7 +49,7 @@ class Thumbnailboard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10), // 이미지의 모서리를 둥글게 설정
                   child: Image.memory(
-                    image, 
+                    image,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
