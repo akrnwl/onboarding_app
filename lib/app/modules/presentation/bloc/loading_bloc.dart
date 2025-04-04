@@ -28,4 +28,10 @@ class LoadingBloc extends Bloc<LoadingEvent, String> {
       emit('Error');
     });
   }
+
+  @override
+  void onChange(Change<String> change) {
+    super.onChange(change);
+    print(change);
+  }
 }
