@@ -11,8 +11,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart'
-    as _i6;
 import 'package:infoteam_app/app/modules/presentation/pages/board_page.dart'
     as _i1;
 import 'package:infoteam_app/app/modules/presentation/pages/home_page.dart'
@@ -57,7 +55,7 @@ class HomeRoute extends _i4.PageRouteInfo<void> {
 class PostRoute extends _i4.PageRouteInfo<PostRouteArgs> {
   PostRoute({
     _i5.Key? key,
-    required _i6.PostListModel postListModel,
+    required InvalidType postListModel,
     required int index,
     List<_i4.PageRouteInfo>? children,
   }) : super(
@@ -94,7 +92,7 @@ class PostRouteArgs {
 
   final _i5.Key? key;
 
-  final _i6.PostListModel postListModel;
+  final InvalidType postListModel;
 
   final int index;
 

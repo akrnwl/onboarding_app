@@ -6,8 +6,9 @@ import 'package:infoteam_app/app/modules/presentation/widgets/header.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/notice_thumbnail.dart';
 import 'package:infoteam_app/app/modules/data/data_source/post_api.dart'; // PostApi 임포트
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_list_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_model.dart';
+import 'package:infoteam_app/routes/app_router.gr.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -66,23 +67,28 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final router = context.router;
+    router.push(const HomeRoute());
+    router.push(const BoardRoute());
+    router.push(PostRoute(postListModel: response!, index: response!.count));
     return isLoading
         ? const Center(child: CircularProgressIndicator())
-        : Scaffold(
-            backgroundColor: const Color.fromARGB(255, 248, 248, 248),
-            appBar: const Header(),
-            body: ListView.builder(
-              itemCount: response!.count, // response가 null이 아님을 여기서 보장
-              itemBuilder: (context, index) {
-                return Thumbnailboard(postModel: postModel[index]);
-              },
-            ),
-            bottomNavigationBar: isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : Navbar(
-                    router: router,
-                    postListModel: response!,
-                  ),
-          );
+        : response == null
+            ? const Center(child: Text('데이터가 없습니다.'))
+            : Scaffold(
+                backgroundColor: const Color.fromARGB(255, 248, 248, 248),
+                appBar: const Header(),
+                body: ListView.builder(
+                  itemCount: response!.count, // response가 null이 아님을 여기서 보장
+                  itemBuilder: (context, index) {
+                    return Thumbnailboard(postModel: postModel[index]);
+                  },
+                ),
+                bottomNavigationBar: isLoading
+                    ? const Center(child: CircularProgressIndicator())
+                    : Navbar(
+                        router: router,
+                        postListModel: response!,
+                      ),
+              );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/board_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/user_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_image_model.dart';
+import 'package:infoteam_app/app/modules/data/model/board_model.dart';
+import 'package:infoteam_app/app/modules/data/model/user_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_list_image_model.dart';
 
 part 'post_model.freezed.dart';
 part 'post_model.g.dart';

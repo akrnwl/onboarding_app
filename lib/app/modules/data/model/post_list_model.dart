@@ -1,4 +1,4 @@
-import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'post_list_model.freezed.dart';

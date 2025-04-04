@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:infoteam_app/app/modules/presentation/pages/home_page.dart';
 import 'package:infoteam_app/routes/app_router.dart';
 
 final _appRouter = AppRouter(); // AppRouter 인스턴스 생성

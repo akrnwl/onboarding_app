@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_list_model.dart';
 
 class Tag extends StatelessWidget {
   const Tag({

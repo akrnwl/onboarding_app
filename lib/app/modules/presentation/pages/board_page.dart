@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_list_model.dart';
+import 'package:infoteam_app/app/modules/data/model/post_model.dart';
 import 'package:infoteam_app/app/modules/data/data_source/post_api.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/header.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/button.dart';
@@ -64,9 +64,9 @@ class _BoardPageState extends State<BoardPage> {
   @override
   Widget build(BuildContext context) {
     final router = context.router;
-    router.push(const HomeRoute());
+    /* router.push(const HomeRoute());
     router.push(const BoardRoute());
-    router.push(PostRoute(postListModel: response!, index: response!.count));
+    router.push(PostRoute(postListModel: response!, index: response!.count)); */
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
