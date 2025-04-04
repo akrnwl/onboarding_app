@@ -66,23 +66,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final router = context.router;
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 248, 248),
-      appBar: const Header(),
-      body: isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : response == null
-              ? const Center(child: Text('데이터가 없습니다.'))
-              : ListView.builder(
-                  itemCount: response!.count, // response가 null이 아님을 여기서 보장
-                  itemBuilder: (context, index) {
-                    return Thumbnailboard(postModel: postModel[index]);
-                  },
-                ),
-      bottomNavigationBar: Navbar(
-        router: router,
-        postListModel: response!,
-      ),
-    );
+    return isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Scaffold(
+            backgroundColor: const Color.fromARGB(255, 248, 248, 248),
+            appBar: const Header(),
+            body: ListView.builder(
+              itemCount: response!.count, // response가 null이 아님을 여기서 보장
+              itemBuilder: (context, index) {
+                return Thumbnailboard(postModel: postModel[index]);
+              },
+            ),
+            bottomNavigationBar: isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Navbar(
+                    router: router,
+                    postListModel: response!,
+                  ),
+          );
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:infoteam_app/gen/assets.gen.dart';
 import 'package:infoteam_app/app/modules/data/data_source/model/post_list_image_model.dart';
 import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/model/post_list_model.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 

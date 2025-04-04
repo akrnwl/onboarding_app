@@ -6,9 +6,7 @@ import 'package:infoteam_app/app/modules/data/data_source/model/post_model.dart'
 import 'package:infoteam_app/app/modules/data/data_source/post_api.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/header.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/button.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
-import 'package:infoteam_app/app/modules/presentation/widgets/notice_thumbnail.dart';
 import 'package:infoteam_app/routes/app_router.gr.dart';
 
 @RoutePage()
@@ -69,24 +67,26 @@ class _BoardPageState extends State<BoardPage> {
     router.push(const HomeRoute());
     router.push(const BoardRoute());
     router.push(PostRoute(postListModel: response!, index: response!.count));
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 248, 248),
-      appBar: const Header(),
-      body: isLoading
-          ? const Center(child: Text('데이터가 없습니다.'))
-          : ListView.builder(
-              itemCount: response!.count,
-              itemBuilder: (context, index) {
-                return Button(
-                  postListModel: response!,
-                  index: index,
-                  router: router,
-                );
-              }),
-      bottomNavigationBar: Navbar(
-        router: router,
-        postListModel: response!,
-      ),
-    );
+    return isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Scaffold(
+            backgroundColor: const Color.fromARGB(255, 248, 248, 248),
+            appBar: const Header(),
+            body: isLoading
+                ? const Center(child: Text('데이터가 없습니다.'))
+                : ListView.builder(
+                    itemCount: response!.count,
+                    itemBuilder: (context, index) {
+                      return Button(
+                        postListModel: response!,
+                        index: index,
+                        router: router,
+                      );
+                    }),
+            bottomNavigationBar: Navbar(
+              router: router,
+              postListModel: response!,
+            ),
+          );
   }
 }
