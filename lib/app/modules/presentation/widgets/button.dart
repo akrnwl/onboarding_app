@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:infoteam_app/app/modules/data/model/post_model.dart';
 import 'package:infoteam_app/gen/assets.gen.dart';
 import 'package:infoteam_app/app/modules/data/model/post_list_model.dart';
 
@@ -8,12 +9,12 @@ import 'package:infoteam_app/routes/app_router.gr.dart';
 class Button extends StatelessWidget {
   const Button({
     super.key,
-    required this.postListModel,
+    required this.postModel,
     required this.router,
     required this.index,
   });
 
-  final PostListModel postListModel;
+  final List<PostModel> postModel;
   final StackRouter router;
   final int index;
 
@@ -35,7 +36,7 @@ class Button extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 14, top: 15, bottom: 14),
               child: Text(
-                postListModel.list[index].title,
+                postModel[index].title,
                 style: const TextStyle(
                   fontSize: 16,
                   fontFamily: 'Pretendard',
@@ -50,9 +51,8 @@ class Button extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15, right: 14, bottom: 14),
               child: IconButton(
                 onPressed: () {
-                  router.navigate(PostRoute(
-                      postListModel: postListModel,
-                      index: postListModel.count));
+                  router
+                      .navigate(PostRoute(postModel: postModel, index: index));
                 },
                 icon: Assets.icons.right.svg(),
               ),

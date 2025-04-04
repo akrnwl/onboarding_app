@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   late final Dio _dio;
   PostListModel? response; // response를 class 내에서 선언하고
   late List<PostModel> postModel;
+  late int index;
   // 비동기 데이터 가져오는 함수
   Future<void> _fetchData() async {
     setState(() {
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> {
       final postApi = PostApi(_dio);
       response = await postApi.getPosts(); // 데이터 받아오기
       postModel = response!.list;
+      index = response!.count;
       print(response!.list);
       setState(() {
         isLoading = false; // 로딩 상태 종료
@@ -68,8 +70,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final router = context.router;
     router.push(const HomeRoute());
-    router.push(const BoardRoute());
-    router.push(PostRoute(postListModel: response!, index: response!.count));
+    router.push(BoardRoute(postModel: postModel, index: index));
+    router.push(PostRoute(postModel: postModel, index: index));
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : response == null
@@ -80,14 +82,15 @@ class _HomePageState extends State<HomePage> {
                 body: ListView.builder(
                   itemCount: response!.count, // response가 null이 아님을 여기서 보장
                   itemBuilder: (context, index) {
-                    return Thumbnailboard(postModel: postModel[index]);
+                    return Thumbnailboard(postModel: postModel, index: index);
                   },
                 ),
                 bottomNavigationBar: isLoading
                     ? const Center(child: CircularProgressIndicator())
                     : Navbar(
                         router: router,
-                        postListModel: response!,
+                        postModel: postModel,
+                        index: index,
                       ),
               );
   }

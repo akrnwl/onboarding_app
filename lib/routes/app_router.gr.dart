@@ -11,8 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:flutter/material.dart' as _i5;
-import 'package:infoteam_app/app/modules/data/model/post_list_model.dart'
-    as _i6;
+import 'package:infoteam_app/app/modules/data/model/post_model.dart' as _i6;
 import 'package:infoteam_app/app/modules/presentation/pages/board_page.dart'
     as _i1;
 import 'package:infoteam_app/app/modules/presentation/pages/home_page.dart'
@@ -22,18 +21,50 @@ import 'package:infoteam_app/app/modules/presentation/pages/post_page.dart'
 
 /// generated route for
 /// [_i1.BoardPage]
-class BoardRoute extends _i4.PageRouteInfo<void> {
-  const BoardRoute({List<_i4.PageRouteInfo>? children})
-    : super(BoardRoute.name, initialChildren: children);
+class BoardRoute extends _i4.PageRouteInfo<BoardRouteArgs> {
+  BoardRoute({
+    _i5.Key? key,
+    required List<_i6.PostModel> postModel,
+    required int index,
+    List<_i4.PageRouteInfo>? children,
+  }) : super(
+         BoardRoute.name,
+         args: BoardRouteArgs(key: key, postModel: postModel, index: index),
+         initialChildren: children,
+       );
 
   static const String name = 'BoardRoute';
 
   static _i4.PageInfo page = _i4.PageInfo(
     name,
     builder: (data) {
-      return const _i1.BoardPage();
+      final args = data.argsAs<BoardRouteArgs>();
+      return _i1.BoardPage(
+        key: args.key,
+        postModel: args.postModel,
+        index: args.index,
+      );
     },
   );
+}
+
+class BoardRouteArgs {
+  const BoardRouteArgs({
+    this.key,
+    required this.postModel,
+    required this.index,
+  });
+
+  final _i5.Key? key;
+
+  final List<_i6.PostModel> postModel;
+
+  final int index;
+
+  @override
+  String toString() {
+    return 'BoardRouteArgs{key: $key, postModel: $postModel, index: $index}';
+  }
 }
 
 /// generated route for
@@ -57,16 +88,12 @@ class HomeRoute extends _i4.PageRouteInfo<void> {
 class PostRoute extends _i4.PageRouteInfo<PostRouteArgs> {
   PostRoute({
     _i5.Key? key,
-    required _i6.PostListModel postListModel,
+    required List<_i6.PostModel> postModel,
     required int index,
     List<_i4.PageRouteInfo>? children,
   }) : super(
          PostRoute.name,
-         args: PostRouteArgs(
-           key: key,
-           postListModel: postListModel,
-           index: index,
-         ),
+         args: PostRouteArgs(key: key, postModel: postModel, index: index),
          initialChildren: children,
        );
 
@@ -78,7 +105,7 @@ class PostRoute extends _i4.PageRouteInfo<PostRouteArgs> {
       final args = data.argsAs<PostRouteArgs>();
       return _i3.PostPage(
         key: args.key,
-        postListModel: args.postListModel,
+        postModel: args.postModel,
         index: args.index,
       );
     },
@@ -86,20 +113,16 @@ class PostRoute extends _i4.PageRouteInfo<PostRouteArgs> {
 }
 
 class PostRouteArgs {
-  const PostRouteArgs({
-    this.key,
-    required this.postListModel,
-    required this.index,
-  });
+  const PostRouteArgs({this.key, required this.postModel, required this.index});
 
   final _i5.Key? key;
 
-  final _i6.PostListModel postListModel;
+  final List<_i6.PostModel> postModel;
 
   final int index;
 
   @override
   String toString() {
-    return 'PostRouteArgs{key: $key, postListModel: $postListModel, index: $index}';
+    return 'PostRouteArgs{key: $key, postModel: $postModel, index: $index}';
   }
 }
