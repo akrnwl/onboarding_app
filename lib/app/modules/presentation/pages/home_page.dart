@@ -2,13 +2,13 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:infoteam_app/app/modules/presentation/bloc/loading_bloc.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/header.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/notice_thumbnail.dart';
-import 'package:infoteam_app/app/modules/data/data_source/post_api.dart'; // PostApi 임포트
+import 'package:infoteam_app/app/modules/data/data_source/post_api.dart';
 import 'package:infoteam_app/app/modules/data/model/post_list_model.dart';
 import 'package:infoteam_app/app/modules/data/model/post_model.dart';
-import 'package:infoteam_app/routes/app_router.gr.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {
@@ -24,6 +24,8 @@ class _HomePageState extends State<HomePage> {
   PostListModel? response;
   late List<PostModel> postModel;
   late int index;
+  final bloc = LoadingBloc();
+
   Future<void> _fetchData() async {
     setState(() {
       isLoading = true; // 로딩 상태 시작
@@ -34,25 +36,19 @@ class _HomePageState extends State<HomePage> {
         headers: {'Content-Type': 'application/json'}));
 
     try {
+      bloc.add(LoadingDuring());
       final postApi = PostApi(_dio);
-      response = await postApi.getPosts(); // 데이터 받아오기
+      response = await postApi.getPosts();
       postModel = response!.list;
       index = response!.count;
-      print(response!.list);
+      bloc.add(LoadingEnd());
       setState(() {
-        isLoading = false; // 로딩 상태 종료
+        isLoading = false;
         postModel = response!.list;
         index = response!.count;
       });
-    } on DioException catch (e) {
-      setState(() {
-        isLoading = false; // 로딩 상태 종료
-      });
-      print('DioError occurred: ${e.message}'); // DioError 메시지 출력
-      if (e.response != null) {
-        print('Response data: ${e.response?.data}');
-      }
     } catch (e) {
+      bloc.add(LoadingError());
       setState(() {
         isLoading = false; // 로딩 상태 종료
       });

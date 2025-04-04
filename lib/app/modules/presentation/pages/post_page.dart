@@ -1,9 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:infoteam_app/app/modules/data/model/post_list_model.dart';
 import 'package:infoteam_app/app/modules/data/model/post_model.dart';
-import 'package:infoteam_app/app/modules/data/data_source/post_api.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/focus_header.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/tag.dart';
 import 'package:infoteam_app/app/modules/presentation/widgets/navbar.dart';
