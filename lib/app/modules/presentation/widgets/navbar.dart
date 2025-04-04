@@ -18,9 +18,6 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    router.push(const HomeRoute());
-    router.push(BoardRoute(postModel: postModel, index: index));
-    router.push(PostRoute(postModel: postModel, index: index));
     return BottomAppBar(
       color: Colors.white,
       child: SizedBox(
@@ -41,10 +38,10 @@ class Navbar extends StatelessWidget {
             IconButton(
                 icon: Assets.icons.profile.svg(),
                 onPressed: () {
-                  router.navigate(PostRoute(
+                  /* router.navigate(PostRoute(
                     postModel: postModel,
                     index: index,
-                  ));
+                  )); */
                 }),
           ])),
     );

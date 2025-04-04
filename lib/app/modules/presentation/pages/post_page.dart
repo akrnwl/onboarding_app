@@ -25,7 +25,7 @@ class PostPage extends StatelessWidget {
     String Date = DateFormat('yyyy.mm.dd').format(postModel[index].createdAt);
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      appBar: Focusheader(name: postModel[index].title),
+      appBar: Focusheader(postModel: postModel, index: index, router: router),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -63,9 +63,10 @@ class PostPage extends StatelessWidget {
                 Text(
                   Date,
                   style: const TextStyle(
-                    fontSize: 16,
+                    color: Color.fromARGB(255, 151, 151, 151),
+                    fontSize: 12,
                     fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                   ),
                 )
               ],
@@ -74,6 +75,7 @@ class PostPage extends StatelessWidget {
               height: 10,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Tag(
                   postModel: postModel,

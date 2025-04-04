@@ -13,26 +13,25 @@ class Tag extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 114, 114, 114),
-        borderRadius: BorderRadius.circular(16.0),
+    return Padding(
+      padding: const EdgeInsets.only(right: 8),
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 114, 114, 114),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        height: 26,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 6, left: 6, top: 4, bottom: 4),
+          child: Text("#${postModel[index].tags}",
+              style: const TextStyle(
+                fontSize: 12,
+                fontFamily: 'Pretendard',
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              )),
+        ),
       ),
-      width: 41,
-      height: 26,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal, // 가로로 스크롤 설정
-          itemCount: index,
-          itemBuilder: (context, index) {
-            Text("#${postModel[index].tags}",
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                ));
-            return null; // prettier 자동 완성으로 생김
-          }),
     );
   }
 }

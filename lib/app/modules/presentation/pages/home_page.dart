@@ -19,13 +19,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String title = 'dummy'; // 초기 title 값 설정
-  bool isLoading = false; // 로딩 상태 추가
+  bool isLoading = false;
   late final Dio _dio;
-  PostListModel? response; // response를 class 내에서 선언하고
+  PostListModel? response;
   late List<PostModel> postModel;
   late int index;
-  // 비동기 데이터 가져오는 함수
   Future<void> _fetchData() async {
     setState(() {
       isLoading = true; // 로딩 상태 시작
@@ -43,6 +41,8 @@ class _HomePageState extends State<HomePage> {
       print(response!.list);
       setState(() {
         isLoading = false; // 로딩 상태 종료
+        postModel = response!.list;
+        index = response!.count;
       });
     } on DioException catch (e) {
       setState(() {
@@ -63,15 +63,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _fetchData(); // 페이지 로드 시 데이터 가져오기
+    _fetchData();
   }
 
   @override
   Widget build(BuildContext context) {
     final router = context.router;
-    router.push(const HomeRoute());
-    router.push(BoardRoute(postModel: postModel, index: index));
-    router.push(PostRoute(postModel: postModel, index: index));
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : response == null
@@ -80,9 +77,19 @@ class _HomePageState extends State<HomePage> {
                 backgroundColor: const Color.fromARGB(255, 248, 248, 248),
                 appBar: const Header(),
                 body: ListView.builder(
-                  itemCount: response!.count, // response가 null이 아님을 여기서 보장
+                  itemCount: response!.count,
                   itemBuilder: (context, index) {
-                    return Thumbnailboard(postModel: postModel, index: index);
+                    return postModel[index].images != null
+                        ? Thumbnailboard(
+                            postModel: postModel,
+                            index: index,
+                            imageIndex: postModel[index].images!.length - 1,
+                          )
+                        : Thumbnailboard(
+                            postModel: postModel,
+                            index: index,
+                            imageIndex: 0,
+                          );
                   },
                 ),
                 bottomNavigationBar: isLoading

@@ -12,10 +12,12 @@ class Thumbnailboard extends StatelessWidget {
     super.key,
     required this.postModel,
     required this.index,
+    required this.imageIndex,
   });
 
   final List<PostModel> postModel;
   final int index;
+  final int imageIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class Thumbnailboard extends StatelessWidget {
         postModel[index].images;
     Uint8List image = Uint8List(0);
     if (postListImageModel != null && postListImageModel.isNotEmpty) {
-      image = base64Decode(postListImageModel[0].image); //index
+      image = base64Decode(postListImageModel[imageIndex].image); //index
     }
     return GestureDetector(
       onTap: () {
