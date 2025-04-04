@@ -39,13 +39,12 @@ mixin _$BoardModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            const DeepCollectionEquality().equals(other.creator, creator));
+            (identical(other.creator, creator) || other.creator == creator));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, createdAt,
-      const DeepCollectionEquality().hash(creator));
+  int get hashCode => Object.hash(runtimeType, id, title, createdAt, creator);
 
   @override
   String toString() {
@@ -60,6 +59,8 @@ abstract mixin class $BoardModelCopyWith<$Res> {
       _$BoardModelCopyWithImpl;
   @useResult
   $Res call({String id, String title, DateTime createdAt, UserModel creator});
+
+  $UserModelCopyWith<$Res> get creator;
 }
 
 /// @nodoc
@@ -77,7 +78,7 @@ class _$BoardModelCopyWithImpl<$Res> implements $BoardModelCopyWith<$Res> {
     Object? id = null,
     Object? title = null,
     Object? createdAt = null,
-    Object? creator = freezed,
+    Object? creator = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -92,11 +93,21 @@ class _$BoardModelCopyWithImpl<$Res> implements $BoardModelCopyWith<$Res> {
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      creator: freezed == creator
+      creator: null == creator
           ? _self.creator
           : creator // ignore: cast_nullable_to_non_nullable
               as UserModel,
     ));
+  }
+
+  /// Create a copy of BoardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get creator {
+    return $UserModelCopyWith<$Res>(_self.creator, (value) {
+      return _then(_self.copyWith(creator: value));
+    });
   }
 }
 
@@ -144,13 +155,12 @@ class _BoardModel implements BoardModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            const DeepCollectionEquality().equals(other.creator, creator));
+            (identical(other.creator, creator) || other.creator == creator));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, createdAt,
-      const DeepCollectionEquality().hash(creator));
+  int get hashCode => Object.hash(runtimeType, id, title, createdAt, creator);
 
   @override
   String toString() {
@@ -167,6 +177,9 @@ abstract mixin class _$BoardModelCopyWith<$Res>
   @override
   @useResult
   $Res call({String id, String title, DateTime createdAt, UserModel creator});
+
+  @override
+  $UserModelCopyWith<$Res> get creator;
 }
 
 /// @nodoc
@@ -184,7 +197,7 @@ class __$BoardModelCopyWithImpl<$Res> implements _$BoardModelCopyWith<$Res> {
     Object? id = null,
     Object? title = null,
     Object? createdAt = null,
-    Object? creator = freezed,
+    Object? creator = null,
   }) {
     return _then(_BoardModel(
       id: null == id
@@ -199,11 +212,21 @@ class __$BoardModelCopyWithImpl<$Res> implements _$BoardModelCopyWith<$Res> {
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      creator: freezed == creator
+      creator: null == creator
           ? _self.creator
           : creator // ignore: cast_nullable_to_non_nullable
               as UserModel,
     ));
+  }
+
+  /// Create a copy of BoardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get creator {
+    return $UserModelCopyWith<$Res>(_self.creator, (value) {
+      return _then(_self.copyWith(creator: value));
+    });
   }
 }
 

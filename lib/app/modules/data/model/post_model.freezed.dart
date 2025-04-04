@@ -43,10 +43,11 @@ mixin _$PostModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.body, body) || other.body == body) &&
             const DeepCollectionEquality().equals(other.tags, tags) &&
-            const DeepCollectionEquality().equals(other.board, board) &&
+            (identical(other.board, board) || other.board == board) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
             const DeepCollectionEquality().equals(other.images, images));
   }
 
@@ -58,9 +59,9 @@ mixin _$PostModel {
       title,
       body,
       const DeepCollectionEquality().hash(tags),
-      const DeepCollectionEquality().hash(board),
+      board,
       createdAt,
-      const DeepCollectionEquality().hash(createdBy),
+      createdBy,
       const DeepCollectionEquality().hash(images));
 
   @override
@@ -83,6 +84,9 @@ abstract mixin class $PostModelCopyWith<$Res> {
       DateTime createdAt,
       UserModel createdBy,
       List<PostListImageModel>? images});
+
+  $BoardModelCopyWith<$Res> get board;
+  $UserModelCopyWith<$Res> get createdBy;
 }
 
 /// @nodoc
@@ -101,9 +105,9 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
     Object? title = null,
     Object? body = null,
     Object? tags = null,
-    Object? board = freezed,
+    Object? board = null,
     Object? createdAt = null,
-    Object? createdBy = freezed,
+    Object? createdBy = null,
     Object? images = freezed,
   }) {
     return _then(_self.copyWith(
@@ -123,7 +127,7 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
           ? _self.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      board: freezed == board
+      board: null == board
           ? _self.board
           : board // ignore: cast_nullable_to_non_nullable
               as BoardModel,
@@ -131,7 +135,7 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      createdBy: freezed == createdBy
+      createdBy: null == createdBy
           ? _self.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as UserModel,
@@ -140,6 +144,26 @@ class _$PostModelCopyWithImpl<$Res> implements $PostModelCopyWith<$Res> {
           : images // ignore: cast_nullable_to_non_nullable
               as List<PostListImageModel>?,
     ));
+  }
+
+  /// Create a copy of PostModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BoardModelCopyWith<$Res> get board {
+    return $BoardModelCopyWith<$Res>(_self.board, (value) {
+      return _then(_self.copyWith(board: value));
+    });
+  }
+
+  /// Create a copy of PostModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get createdBy {
+    return $UserModelCopyWith<$Res>(_self.createdBy, (value) {
+      return _then(_self.copyWith(createdBy: value));
+    });
   }
 }
 
@@ -214,10 +238,11 @@ class _PostModel implements PostModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.body, body) || other.body == body) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
-            const DeepCollectionEquality().equals(other.board, board) &&
+            (identical(other.board, board) || other.board == board) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
             const DeepCollectionEquality().equals(other._images, _images));
   }
 
@@ -229,9 +254,9 @@ class _PostModel implements PostModel {
       title,
       body,
       const DeepCollectionEquality().hash(_tags),
-      const DeepCollectionEquality().hash(board),
+      board,
       createdAt,
-      const DeepCollectionEquality().hash(createdBy),
+      createdBy,
       const DeepCollectionEquality().hash(_images));
 
   @override
@@ -257,6 +282,11 @@ abstract mixin class _$PostModelCopyWith<$Res>
       DateTime createdAt,
       UserModel createdBy,
       List<PostListImageModel>? images});
+
+  @override
+  $BoardModelCopyWith<$Res> get board;
+  @override
+  $UserModelCopyWith<$Res> get createdBy;
 }
 
 /// @nodoc
@@ -275,9 +305,9 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
     Object? title = null,
     Object? body = null,
     Object? tags = null,
-    Object? board = freezed,
+    Object? board = null,
     Object? createdAt = null,
-    Object? createdBy = freezed,
+    Object? createdBy = null,
     Object? images = freezed,
   }) {
     return _then(_PostModel(
@@ -297,7 +327,7 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
           ? _self._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      board: freezed == board
+      board: null == board
           ? _self.board
           : board // ignore: cast_nullable_to_non_nullable
               as BoardModel,
@@ -305,7 +335,7 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      createdBy: freezed == createdBy
+      createdBy: null == createdBy
           ? _self.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as UserModel,
@@ -314,6 +344,26 @@ class __$PostModelCopyWithImpl<$Res> implements _$PostModelCopyWith<$Res> {
           : images // ignore: cast_nullable_to_non_nullable
               as List<PostListImageModel>?,
     ));
+  }
+
+  /// Create a copy of PostModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BoardModelCopyWith<$Res> get board {
+    return $BoardModelCopyWith<$Res>(_self.board, (value) {
+      return _then(_self.copyWith(board: value));
+    });
+  }
+
+  /// Create a copy of PostModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get createdBy {
+    return $UserModelCopyWith<$Res>(_self.createdBy, (value) {
+      return _then(_self.copyWith(createdBy: value));
+    });
   }
 }
 
