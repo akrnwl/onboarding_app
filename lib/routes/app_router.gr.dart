@@ -90,10 +90,16 @@ class PostRoute extends _i4.PageRouteInfo<PostRouteArgs> {
     _i5.Key? key,
     required List<_i6.PostModel> postModel,
     required int index,
+    required int imageIndex,
     List<_i4.PageRouteInfo>? children,
   }) : super(
          PostRoute.name,
-         args: PostRouteArgs(key: key, postModel: postModel, index: index),
+         args: PostRouteArgs(
+           key: key,
+           postModel: postModel,
+           index: index,
+           imageIndex: imageIndex,
+         ),
          initialChildren: children,
        );
 
@@ -107,13 +113,19 @@ class PostRoute extends _i4.PageRouteInfo<PostRouteArgs> {
         key: args.key,
         postModel: args.postModel,
         index: args.index,
+        imageIndex: args.imageIndex,
       );
     },
   );
 }
 
 class PostRouteArgs {
-  const PostRouteArgs({this.key, required this.postModel, required this.index});
+  const PostRouteArgs({
+    this.key,
+    required this.postModel,
+    required this.index,
+    required this.imageIndex,
+  });
 
   final _i5.Key? key;
 
@@ -121,8 +133,10 @@ class PostRouteArgs {
 
   final int index;
 
+  final int imageIndex;
+
   @override
   String toString() {
-    return 'PostRouteArgs{key: $key, postModel: $postModel, index: $index}';
+    return 'PostRouteArgs{key: $key, postModel: $postModel, index: $index, imageIndex: $imageIndex}';
   }
 }

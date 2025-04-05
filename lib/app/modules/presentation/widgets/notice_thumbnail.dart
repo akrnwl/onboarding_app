@@ -30,7 +30,10 @@ class Thumbnailboard extends StatelessWidget {
     }
     return GestureDetector(
       onTap: () {
-        router.push(PostRoute(postModel: postModel, index: index));
+        router.push(PostRoute(
+            postModel: postModel,
+            index: index,
+            imageIndex: postModel[index].images!.length - 1));
       },
       child: Container(
         decoration: BoxDecoration(

@@ -18,6 +18,7 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int imageIndex = postModel[index].images!.length - 1;
     return Padding(
       padding: const EdgeInsets.only(
         left: 13,
@@ -49,8 +50,11 @@ class Button extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15, right: 14, bottom: 14),
               child: IconButton(
                 onPressed: () {
-                  router
-                      .navigate(PostRoute(postModel: postModel, index: index));
+                  router.navigate(PostRoute(
+                    postModel: postModel,
+                    index: index,
+                    imageIndex: imageIndex,
+                  ));
                 },
                 icon: Assets.icons.right.svg(),
               ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:infoteam_app/app/modules/data/model/post_model.dart';
@@ -13,13 +15,17 @@ class PostPage extends StatelessWidget {
     super.key,
     required this.postModel,
     required this.index,
+    required this.imageIndex,
   });
   final List<PostModel> postModel;
   final int index;
+  final int imageIndex;
   @override
   Widget build(BuildContext context) {
     final router = context.router;
     String Date = DateFormat('yyyy.mm.dd').format(postModel[index].createdAt);
+    final image = base64Decode(postModel[index].images![imageIndex].image);
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       appBar: Focusheader(postModel: postModel, index: index, router: router),
@@ -97,8 +103,11 @@ class PostPage extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10), // 이미지의 모서리를 둥글게 설정
-                child: Assets.images.eximage
-                    .image(width: double.infinity, fit: BoxFit.cover),
+                child: Image.memory(
+                  image,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             const SizedBox(

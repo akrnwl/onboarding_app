@@ -11,6 +11,7 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(
             page: PostRoute.page,
-            path: '/:index/:postListModel'), // path:':index' 는 index 매개변수 추가?
+            path:
+                '/:index/:postListModel/:imageIndex'), // path:':index' 는 index 매개변수 추가?
       ];
 }
