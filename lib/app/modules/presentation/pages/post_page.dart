@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,11 @@ class PostPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = context.router;
     String Date = DateFormat('yyyy.mm.dd').format(postModel[index].createdAt);
-    final image = base64Decode(postModel[index].images![imageIndex].image);
+    Uint8List image = Uint8List(0);
+    if (postModel[index].images != null &&
+        postModel[index].images!.isNotEmpty) {
+      image = base64Decode(postModel[index].images![imageIndex].image);
+    }
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
@@ -97,19 +102,20 @@ class PostPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 24),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10), // 이미지의 모서리를 둥글게 설정
-                child: Image.memory(
-                  image,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+            if (image.isNotEmpty)
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10), // 이미지의 모서리를 둥글게 설정
+                  child: Image.memory(
+                    image,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
             const SizedBox(
               height: 24,
             ),
